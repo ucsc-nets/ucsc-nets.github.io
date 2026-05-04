@@ -11,9 +11,16 @@ export default function ContactPage() {
                 className="object-cover z-0 fixed"
                 priority
             />
+            <div className="my-12 ml-30 relative z-20 bg-black/50 backdrop-blur-sm p-4 rounded-xl w-fit border border-white/10">
+                <h1 className="text-4xl font-extrabold text-white tracking-tight">
+                    Contact Us&ensp;&ndash;&ensp;Learn, Weave, Report Damage 
+                </h1>
+            </div>
+
             <ContactForm/>
-            <div className="z-50 flex items-center justify-center sm:text-2xl md:text-3xl font-medium">
-                <div className="bg-black/50 backdrop-blur-xs w-1/3 flex flex-col justify-center items-center p-6 my-8 border border-white/50 rounded-md">
+
+            <div className="z-40 flex items-center justify-center sm:text-2xl md:text-3xl font-medium">
+                <div className="bg-black/50 backdrop-blur-xs w-1/3 flex flex-col justify-center items-center p-6 my-8 border border-white/20 rounded-md">
                     Reach Out on Instagram
                     <div className="flex gap-8 flex-row mt-4">
                         <a

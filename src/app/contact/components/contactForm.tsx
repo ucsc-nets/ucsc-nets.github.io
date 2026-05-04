@@ -79,7 +79,7 @@ export default function ContactForm() {
     }, [state]);
 
     return (
-        <div className="z-50 bg-black/50 backdrop-blur-sm border-b border-b-white/50">
+        <div className="z-50 bg-black/30 backdrop-blur-sm border-y border-white/20">
             <form action={formAction} className="flex-col mb-4 p-8 px-16 text-3xl">
                 <input type="hidden" name="turnstileToken" value={turnstileToken || ""} />
                 
@@ -134,7 +134,7 @@ export default function ContactForm() {
                     </div>
                     
                     <button 
-                        className="hover:text-white hover:scale-105 transition-all duration-200 bg-white/10 px-4 h-17 rounded-3xl backdrop-blur-lg border border-white/30"
+                        className="hover:text-white hover:scale-105 transition-all duration-200 bg-black/30 px-4 h-17 rounded-3xl backdrop-blur-lg border border-white/30"
                         type="submit" 
                         disabled={isPending || !turnstileToken}
                         hidden={isPending || !turnstileToken}

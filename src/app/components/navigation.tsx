@@ -32,8 +32,9 @@ export default function Navigation() {
   return (
     <>
       {/* Nav Toggle */}
-      <button 
-        className="fixed p-2 text-inherit right-6 top-6 bg-transparent z-40"
+      {!isMobileMenuOpen ? (
+        <button 
+        className="rounded-lg fixed p-2 text-inherit right-6 top-6 bg-black/45 hover:bg-black/70 backdrop-blur-xs animate-in fade-in duration-200 z-40"
         onClick={() => setIsMobileMenuOpen(true)}
         aria-label="Open Menu"
       >
@@ -41,6 +42,9 @@ export default function Navigation() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
+      ) : (
+        <></>
+      )}
 
       {/* Menu */}
       {isMobileMenuOpen && (
@@ -68,6 +72,9 @@ export default function Navigation() {
             onClick={(e) => e.stopPropagation()}
           >
               <nav className="flex flex-col items-center gap-4 text-lg font-medium">
+                  <Link href="/status" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
+                      Nets
+                  </Link>
                   <Link href="/gallery" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
                       Gallery
                   </Link>
