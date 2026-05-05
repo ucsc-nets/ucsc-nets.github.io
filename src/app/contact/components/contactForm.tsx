@@ -92,7 +92,7 @@ export default function ContactForm() {
                             type="text"
                             required
                             maxLength={100}
-                            className="w-full text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
                         />
                     </div>
 
@@ -106,7 +106,7 @@ export default function ContactForm() {
                             maxLength={100}
                             pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                             title="Please enter a valid email address (e.g., name@domain.com)"
-                            className="w-full text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
                         />
                     </div>
                 </div>
@@ -119,18 +119,18 @@ export default function ContactForm() {
                         required
                         rows={5}
                         maxLength={5000}
-                        className="w-full text-xl p-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                        className="w-full text-lg sm:text-xl p-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
                     />
                 </div>
 
-                <div className="flex grid-cols-2 xs: gap-8 sm:gap-16 -mb-5">
+                <div className="flex grid-cols-2 justify-center md:justify-start gap-4 sm:gap-8 -mb-5">
                     <div>
                         <Turnstile
                             siteKey={siteKey}
                             onSuccess={(token) => setTurnstileToken(token)}
                             onExpire={() => setTurnstileToken(null)}
                             ref={turnstileRef}
-                            className="-ml-16 sm:ml-0"
+                            className="ml-4"
                         />
                     </div>
                     

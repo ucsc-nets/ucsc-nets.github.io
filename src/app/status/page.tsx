@@ -11,14 +11,15 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <Image
+      <Image
             src="/images/weaving-treenet-shadow.webp"
             alt="Background Treenet Image"
             fill
             className="object-cover z-0 fixed"
             priority
         />
+        <div className="max-w-7xl mx-auto">
+        
         <div className="mb-10 relative z-20 bg-black/50 backdrop-blur-sm p-4 rounded-xl w-fit border border-white/10">
           <h1 className="text-4xl font-extrabold text-white tracking-tight">
             Treenets at University of California, Santa Cruz

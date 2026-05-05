@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LearnPage() {
     return (
@@ -15,7 +16,7 @@ export default function LearnPage() {
                     Learn How to Weave
                 </h1>
                 <p className="text-lg my-1 -mb-1 text-white">
-                    <a
+                    <Link
                         href="./contact"
                         target="_blank" 
                         rel="noopener noreferrer"
@@ -23,7 +24,7 @@ export default function LearnPage() {
                         className="hover:text-blue-600 transition-colors cursor-pointer font-semibold"
                     >
                     Contact Us
-                    </a>
+                    </Link>
                     &nbsp;for in - person lessons
                 </p>
             </div>
@@ -34,9 +35,9 @@ export default function LearnPage() {
                     
                 </p>
                 <br className="mt-2"/>
-                <a href="/" className="text-white text-2xl font-light uppercase px-4 py-2 rounded-md hover:underline hover:text-(--headerHover) hover:font-semibold">
+                <Link href="/" className="text-white text-2xl font-light uppercase px-4 py-2 rounded-md hover:underline hover:text-(--headerHover) hover:font-semibold">
                     Home
-                </a>
+                </Link>
             </div>
         </main>
     )

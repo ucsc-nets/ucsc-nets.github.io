@@ -32,6 +32,10 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-full flex flex-col">
         {children}
+        <footer className="text-xs fixed bottom-0 w-full justify-between py-2 pt-4 px-16 bg-black/50 backdrop-blur-md items-start z-30">
+            <p>&copy; 2026 Weavers in Santa Cruz. All Rights Reserved</p>
+            <p className="mt-2">NOT AFFILIATED WITH THE UNIVERSITY OF CALIFORNIA, SANTA CRUZ</p>
+        </footer>
         </main>
       </body>
     </html>
