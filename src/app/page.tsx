@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="abosulte flex flex-col min-h-screen items-center justify-center font-sans bg-black">
+    <div className="relative flex flex-col min-h-screen items-center justify-center font-sans bg-black">
       <Image
           src="/images/treenet-floor.webp"
           alt="Background Treenet Image"
@@ -21,41 +21,41 @@ export default function Home() {
           </p>
         </div>
         {/* Social Media */}
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex w-full p-2 items-center justify-center gap-2 rounded-xl bg-foreground text-background transition-colors hover:bg-[#ccc]"
-            href="https://www.instagram.com/ucsc.nets"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="light:invert"
-              src="/instagram.svg"
-              alt="Instagram logo"
-              width={32}
-              height={32}
-            />
-          </a>
-          <a
-            className="flex w-full p-2 items-center justify-center gap-2 rounded-xl bg-foreground text-background transition-colors hover:bg-[#ccc]"
-            href="https://www.instagram.com/ucsc_nature"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="light:invert"
-              src="/instagram.svg"
-              alt="Instagram logo"
-              width={32}
-              height={32}
-            />
-          </a>
-        </div>
-        <div>
-          <p className="-mt-24">
+        <div className="">
+          <div className="flex flex-col gap-6 text-base font-medium sm:flex-row items-center text-center sm:items-start sm:text-left">
+            <a
+              className="flex w-full p-2 items-center justify-center gap-2 rounded-xl transition-colors bg-white/95 hover:bg-[#ccc]"
+              href="https://www.instagram.com/ucsc.nets"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="light:invert"
+                src="/instagram.svg"
+                alt="Instagram logo"
+                width={32}
+                height={32}
+              />
+            </a>
+            <a
+              className="flex w-full p-2 items-center justify-center gap-2 rounded-xl transition-colors bg-white/95 hover:bg-[#ccc]"
+              href="https://www.instagram.com/ucsc_nature"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="light:invert"
+                src="/instagram.svg"
+                alt="Instagram logo"
+                width={32}
+                height={32}
+              />
+            </a>
+          </div>
+          <div className="absolute mt-4 text-zinc-50">
             Stay up to date on Instagram
-          </p>
-        </div>
+          </div>
+        </div>  
       </main>
     </div>
   );

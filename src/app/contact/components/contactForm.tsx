@@ -123,18 +123,19 @@ export default function ContactForm() {
                     />
                 </div>
 
-                <div className="flex grid-cols-2 gap-16 -mb-5">
+                <div className="flex grid-cols-2 xs: gap-8 sm:gap-16 -mb-5">
                     <div>
                         <Turnstile
                             siteKey={siteKey}
                             onSuccess={(token) => setTurnstileToken(token)}
                             onExpire={() => setTurnstileToken(null)}
                             ref={turnstileRef}
+                            className="-ml-16 sm:ml-0"
                         />
                     </div>
                     
                     <button 
-                        className="hover:text-white hover:scale-105 transition-all duration-200 bg-black/30 px-4 h-17 rounded-3xl backdrop-blur-lg border border-white/30"
+                        className="text-zinc-100 hover:text-white hover:scale-105 transition-all duration-200 bg-black/30 px-4 h-17 rounded-3xl backdrop-blur-lg border border-white/30"
                         type="submit" 
                         disabled={isPending || !turnstileToken}
                         hidden={isPending || !turnstileToken}

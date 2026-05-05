@@ -23,7 +23,7 @@ export default function Home() {
           <h1 className="text-4xl font-extrabold text-white tracking-tight">
             Treenets at University of California, Santa Cruz
           </h1>
-          <p className="text-lg my-1 -mb-1">
+          <p className="text-zinc-300 text-lg my-1 -mb-1">
             <a
                     href="./contact"
                     target="_blank" 
