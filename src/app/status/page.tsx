@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import DataGallery from './components/dataGallery'; 
 import Image from "next/image";
 
@@ -25,16 +26,15 @@ export default function Home() {
             Treenets at University of California, Santa Cruz
           </h1>
           <p className="text-zinc-300 text-lg my-1 -mb-1">
-            <a
+            <Link
                     href="./contact"
                     target="_blank" 
                     rel="noopener noreferrer"
                     // Adding a subtle hover effect so users know it is clickable
-                    className="hover:text-blue-600 transition-colors cursor-pointer font-semibold"
+                    className="hover:text-indigo-300 transition-colors cursor-pointer font-semibold"
             >
-                Contact Us
-            </a>
-            &nbsp;to be added &ndash; report damage
+                Contact Us to be added &ndash; report damage
+            </Link>
           </p>
         </div>
 

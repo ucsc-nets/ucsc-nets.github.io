@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import LessonGallery from './components/lessonGallery';
 
 export default function LearnPage() {
+    const GOOGLE_SHEET_TSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ--5JnLaze9dpX_Im9gVUl8FxAEr2Mv0Z-87gEetjDqTtIhMfmXIzYzY2T5hxu1XJThAqVupyVABgm/pub?gid=1964891158&single=true&output=tsv";
+    const COLUMN_MAPPING = ['type', 'instagram', 'date', 'time'];
+
     return (
         <main className="relative min-h-screen py-12 px-4 sm:px-6 lg:px-8">
             <Image
@@ -21,23 +25,22 @@ export default function LearnPage() {
                         target="_blank" 
                         rel="noopener noreferrer"
                         // Adding a subtle hover effect so users know it is clickable
-                        className="hover:text-blue-600 transition-colors cursor-pointer font-semibold"
+                        className="hover:text-indigo-300 transition-colors cursor-pointer font-semibold"
                     >
-                    Contact Us
+                    Contact Us &ndash; Sign up or Request a different time
                     </Link>
-                    &nbsp;for in - person lessons
                 </p>
             </div>
+            
+            <LessonGallery
+                sheetUrl={GOOGLE_SHEET_TSV_URL}
+                columnMapping={COLUMN_MAPPING}
+            />
 
-            <div className="mb-10 mx-16 relative z-20 bg-black/50 backdrop-blur-sm p-4 rounded-xl w-fit border border-white/10">
+            <div className="my-10 mx-16 relative z-20 bg-black/50 backdrop-blur-sm p-4 rounded-xl w-fit border border-white/10">
                 <p className="text-2xl font-medium text-white tracking-tight">
-                    We are working on creating lessons and instructional material. Please check back soon for online lessons and oportinuties to weave in person
-                    
-                </p>
-                <br className="mt-2"/>
-                <Link href="/" className="text-white text-2xl font-light uppercase px-4 py-2 rounded-md hover:underline hover:text-(--headerHover) hover:font-semibold">
-                    Home
-                </Link>
+                    Please check back soon for online lessons.
+                </p>            
             </div>
         </main>
     )

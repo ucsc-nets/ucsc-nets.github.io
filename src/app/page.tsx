@@ -27,7 +27,7 @@ export default function Home() {
             href="/status" 
             className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
           >
-            <span className="text-2xl font-medium text-white">Nets</span>
+            <span className="-mt-1 text-4xl font-medium text-white">Nets</span>
             <span className="text-sm font-normal text-zinc-200">Check completion and status of nets at UCSC</span>
           </Link>
 
@@ -45,15 +45,15 @@ export default function Home() {
             href="/learn" 
             className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
           >
-            <span className="text-2xl font-medium text-white">Learn</span>
-            <span className="text-sm font-normal text-zinc-200">Discover how to weave and maintain a treenet</span>
+            <span className="-mt-1 text-4xl font-medium text-white">Learn</span>
+            <span className="text-sm font-normal text-zinc-200">Find availability of in-person lessons. Learn how to weave and maintain a treenet</span>
           </Link>
 
           <Link 
             href="/contact" 
             className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
           >
-            <span className="text-2xl font-medium text-white">Contact</span>
+            <span className="-mt-1 text-4xl font-medium text-white">Contact</span>
             <span className="text-sm font-normal text-zinc-200">For any reason or inquiry</span>
           </Link>
 
