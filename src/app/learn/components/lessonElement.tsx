@@ -49,7 +49,7 @@ export default function LessonElement({ item, columnMapping }: LessonElementProp
 
   // Extract values
     const typeId = item[typeKey] || 'Unknown';
-    const instaHandle = item[instaKey] || '&ndash;';
+    const instaHandle = item[instaKey] || 'TBD';
     const dateStr = item[dateKey] || 'TBD';
     const timeStr = item[timeKey] || 'TBD';
 
