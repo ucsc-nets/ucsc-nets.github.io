@@ -78,6 +78,7 @@ jobs:
         env:
           NEXT_PUBLIC_WORKER_URL: ${{ secrets.NEXT_PUBLIC_WORKER_URL }}
           NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          NEXT_PUBLIC_GAS_BOOKING_URL: ${{ secrets.NEXT_PUBLIC_GAS_BOOKING_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
