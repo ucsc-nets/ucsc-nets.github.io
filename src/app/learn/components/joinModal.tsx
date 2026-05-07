@@ -121,7 +121,7 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: J
             {selectedLesson ? (
                 <LessonElement item={selectedLesson} columnMapping={columnMapping} />
             ) : (
-                <p className="text-center text-gray-500">No event selected.</p>
+                <p className="text-center text-gray-500">No lesson selected.</p>
             )}
         </div>
     );
@@ -137,13 +137,13 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: J
                 <div className="flex-1 w-full flex flex-col">
                     <div className="mb-6">
                         <h2 className="text-3xl font-black text-white tracking-tight">Join a Lesson</h2>
-                        <p className="text-white/70 mt-1">Select an upcoming event to attend.</p>
+                        <p className="text-white/70 mt-1">Select an upcoming lesson to attend.</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5 grow">
 
                         <div>
-                            <label className="block text-sm font-semibold text-white/80 mb-1.5 ml-1">Select Event</label>
+                            <label className="block text-sm font-semibold text-white/80 mb-1.5 ml-1">Select Lesson</label>
                             <select
                                 className={`${inputBaseClasses} appearance-none cursor-pointer`}
                                 value={selectedLessonUid}
@@ -175,7 +175,7 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: J
                         </div>
 
                         <div className="block lg:hidden mt-2 mb-2 p-4 bg-white border border-white/10 rounded-2xl">
-                            <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3 text-center">Selected Event Details</p>
+                            <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3 text-center">Selected Lesson Details</p>
                             {PreviewCard}
                         </div>
 
@@ -185,7 +185,7 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: J
 
                         <div className="mt-auto pt-4">
                             <button type="submit" disabled={!isFormValid() || isSubmitting} className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:bg-white/10 disabled:text-white/30 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-lg cursor-pointer disabled:cursor-not-allowed">
-                                {isSubmitting ? 'Securing Spot...' : status === 'success' ? 'Confirmed!' : 'Join Event'}
+                                {isSubmitting ? 'Securing Spot...' : status === 'success' ? 'Confirmed!' : 'Join Lesson'}
                             </button>
                             {status === 'error' && <p className="text-red-400 text-sm mt-2 text-center">{errorMessage}</p>}
                         </div>
