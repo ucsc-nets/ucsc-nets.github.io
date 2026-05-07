@@ -78,7 +78,8 @@ export default function LessonElement({ item, columnMapping }: LessonElementProp
                         rel="noopener noreferrer"
                         className="hover:text-indigo-900 transition-colors cursor-pointer"
                     >
-                        Instructor: {instaHandle}
+                        Instructor: 
+                        <br className="hidden lg:block xl:hidden"/>{instaHandle}
                     </a>
                 ) : (
                     `Instructor: ${instaHandle}`
