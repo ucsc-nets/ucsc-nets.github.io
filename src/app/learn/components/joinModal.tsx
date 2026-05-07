@@ -9,9 +9,10 @@ interface JoinModalProps {
     onClose: () => void;
     lessons: LessonItem[];
     columnMapping: string[];
+    initialLessonUid?: string;
 }
 
-export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: JoinModalProps) {
+export default function JoinModal({ isOpen, onClose, lessons, columnMapping, initialLessonUid }: JoinModalProps) {
     const turnstileRef = useRef<TurnstileInstance>(null);
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
@@ -28,16 +29,15 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping }: J
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
     useEffect(() => {
-        if (lessons.length > 0 && !selectedLessonUid) {
-            setSelectedLessonUid(lessons[0].uid);
-        }
-    }, [lessons, selectedLessonUid]);
-
-    useEffect(() => {
-        if (isOpen) document.body.style.overflow = 'hidden';
-        else document.body.style.overflow = '';
-        return () => { document.body.style.overflow = ''; };
-    }, [isOpen]);
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            if (initialLessonUid) {
+                setSelectedLessonUid(initialLessonUid);
+            } else if (lessons.length > 0 && !selectedLessonUid) {
+                setSelectedLessonUid(lessons[0].uid);
+            }
+        } else document.body.style.overflow = '';
+    }, [isOpen, initialLessonUid, lessons]);
 
     if (!isOpen) return null;
 

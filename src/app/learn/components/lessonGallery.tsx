@@ -6,6 +6,7 @@ import LessonElement, { LessonItem } from './lessonElement';
 interface LessonGalleryProps {
   sheetUrl: string;
   columnMapping: string[];
+  onLessonSelect?: (uid: string) => void;
 }
 
 const parseTSV = (tsvText: string, columnMapping: string[]): LessonItem[] => {
@@ -39,7 +40,7 @@ const LoadingSkeleton = () => (
   </div>
 );
 
-export default function LessonGallery({ sheetUrl, columnMapping }: LessonGalleryProps) {
+export default function LessonGallery({ sheetUrl, columnMapping, onLessonSelect }: LessonGalleryProps) {
   const [data, setData] = useState<LessonItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,6 +79,7 @@ export default function LessonGallery({ sheetUrl, columnMapping }: LessonGallery
             key={item.uid} 
             item={item} 
             columnMapping={columnMapping} 
+            onJoinClick={onLessonSelect}
           />
         ))
       )}

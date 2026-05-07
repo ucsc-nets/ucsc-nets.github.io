@@ -25,6 +25,7 @@ export default function LearnPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
     const [lessonsData, setLessonsData] = useState<LessonItem[]>([]);
+    const [selectedLessonUid, setSelectedLessonUid] = useState<string>('');
 
     const GOOGLE_SHEET_TSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ--5JnLaze9dpX_Im9gVUl8FxAEr2Mv0Z-87gEetjDqTtIhMfmXIzYzY2T5hxu1XJThAqVupyVABgm/pub?gid=1964891158&single=true&output=tsv";
     const COLUMN_MAPPING = ['type', 'instagram', 'date', 'time'];
@@ -82,12 +83,17 @@ export default function LearnPage() {
                 isOpen={isJoinModalOpen} 
                 onClose={() => setIsJoinModalOpen(false)} 
                 lessons={lessonsData} 
-                columnMapping={COLUMN_MAPPING} 
+                columnMapping={COLUMN_MAPPING}
+                initialLessonUid={selectedLessonUid} 
             />
 
             <LessonGallery
                 sheetUrl={GOOGLE_SHEET_TSV_URL}
                 columnMapping={COLUMN_MAPPING}
+                onLessonSelect={(uid) => {
+                    setSelectedLessonUid(uid);
+                    setIsJoinModalOpen(true);
+                }}
             />
 
             <div className="my-10 mx-16 relative z-20 bg-black/50 backdrop-blur-sm p-4 rounded-xl w-fit border border-white/10">

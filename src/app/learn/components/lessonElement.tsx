@@ -8,6 +8,7 @@ export interface LessonItem {
 interface LessonElementProps {
     item: LessonItem;
     columnMapping: string[];
+    onJoinClick?: (uid: string) => void;
 }
 
 // Dictionary to map the short identifier from the sheet to rich content
@@ -40,7 +41,7 @@ const LESSON_DICTIONARY: Record<string, { name: string; description: string, pre
     
 };
 
-export default function LessonElement({ item, columnMapping }: LessonElementProps) {
+export default function LessonElement({ item, columnMapping, onJoinClick }: LessonElementProps) {
     // Ensure we have all 4 columns mapped
     if (!columnMapping || columnMapping.length < 4) return null;
 
@@ -61,7 +62,10 @@ export default function LessonElement({ item, columnMapping }: LessonElementProp
     const isInstagram = typeof instaHandle === 'string' && instaHandle.startsWith('@');
 
     return (
-        <div className="group flex flex-col p-6 bg-black/50 backdrop-blur-lg border border-white/10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 z-30">
+        <div 
+            className="cursor-pointer group flex flex-col p-6 bg-black/50 backdrop-blur-lg border border-white/10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 z-30"
+            onClick={() => onJoinClick && onJoinClick(item.uid)}
+        >
         
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
             <div>
@@ -77,6 +81,7 @@ export default function LessonElement({ item, columnMapping }: LessonElementProp
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="hover:text-indigo-900 transition-colors cursor-pointer"
+                        onClick={(e) => e.stopPropagation()}
                     >
                         Instructor: 
                         <br className="hidden lg:block xl:hidden"/>{instaHandle}
