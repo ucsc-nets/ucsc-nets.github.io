@@ -11,9 +11,9 @@ export default function ContactPage() {
                 className="object-cover z-0 fixed"
                 priority
             />
-            <div className="my-12 sm:mx-30 relative z-20 bg-black/50 backdrop-blur-sm p-4 sm:rounded-xl w-fit border border-white/10">
+            <div className="my-12 w-full sm:mx-30 relative z-20 bg-black/50 backdrop-blur-sm p-4 sm:rounded-xl sm:w-fit border border-white/10">
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                    Contact Us&ensp;&ndash;&ensp;Learn, Weave, Report Damage 
+                    Contact Us&ensp;&ndash;&ensp;Report Damage, Reach Out 
                 </h1>
             </div>
 
