@@ -72,9 +72,6 @@ export default function Navigation() {
             onClick={(e) => e.stopPropagation()}
           >
               <nav className="flex flex-col items-center gap-4 text-lg font-medium">
-                  <Link href="/status" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
-                      Nets
-                  </Link>
                   {/*
                   <Link href="/gallery" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
                       Gallery
@@ -85,6 +82,9 @@ export default function Navigation() {
                   </Link>
                   <Link href="/contact" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
                       Contact
+                  </Link>
+                  <Link href="/status" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
+                      Nets
                   </Link>
                   <Link href="/" onClick={handleLinkClick} className="hover:text-white hover:scale-110 transition-all duration-200 bg-black/10 hover:bg-black/15 px-5 py-2.5 rounded-full backdrop-blur-lg border border-white/10">
                       Home

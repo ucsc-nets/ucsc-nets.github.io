@@ -20,16 +20,8 @@ export default function Home() {
           </h1>
         </div>
       </header>
-      <main className="w-full relative flex flex-col justify-center items-center mt-25 z-10">
+      <main className="w-full relative flex flex-col justify-center items-center mt-20 z-10">
         <div className="flex flex-col gap-6 w-11/12 sm:w-1/2 md:w-1/3 text-center text-zinc-300">
-
-          <Link
-            href="/status"
-            className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
-          >
-            <span className="-mt-1 text-4xl font-medium text-white">Nets</span>
-            <span className="text-sm font-normal text-zinc-200">Check completion and status of nets at UCSC</span>
-          </Link>
 
           {/*
           <Link 
@@ -48,15 +40,6 @@ export default function Home() {
             <span className="-mt-1 text-4xl font-medium text-white">Learn</span>
             <span className="text-sm font-normal text-zinc-200">Book and find free in-person lessons. Learn how to weave and maintain a treenet</span>
           </Link>
-
-          <Link
-            href="/contact"
-            className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
-          >
-            <span className="-mt-1 text-4xl font-medium text-white">Contact</span>
-            <span className="text-sm font-normal text-zinc-200">For any reason or inquiry</span>
-          </Link>
-
         </div>
 
         <div className="w-screen sm:max-w-4/5 md:max-w-3/5 mt-20 mb-20 sm:rounded-3xl bg-black/50 backdrop-blur-lg border-b border-t sm:border border-white/10 flex items-center flex-col">
@@ -119,6 +102,16 @@ export default function Home() {
             Thank you,<br/>
             Weavers of Santa Cruz
           </p>
+        </div>
+
+         <div className="flex flex-col gap-6 w-11/12 sm:w-1/2 md:w-1/3 text-center text-zinc-300 mb-30">
+          <Link
+            href="/contact"
+            className="flex flex-col items-center justify-center gap-1 hover:text-white hover:scale-105 transition-all duration-200 bg-black/20 hover:bg-black/25 px-6 py-5 rounded-3xl backdrop-blur-lg border border-white/10"
+          >
+            <span className="-mt-1 text-4xl font-medium text-white">Contact</span>
+            <span className="text-sm font-normal text-zinc-200">For any reason or inquiry</span>
+          </Link>
         </div>
       </main>
     </div>
