@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Turnstile, TurnstileInstance } from "@marsidev/react-turnstile";
 import LessonElement, { LessonItem } from './lessonElement';
+import ShaderBackground from '@/app/components/shaderBackground';
 
 interface JoinModalProps {
     isOpen: boolean;
@@ -28,22 +29,43 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping, ini
 
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
+    const watercolorUniforms = {
+        u_complexity: 3.7,
+        u_saturation: 1.2,
+        u_twist: 1.0,
+        u_light: 1.0,
+        u_mix: 1.8,
+        u_red: 0.09,
+        u_green: 0.16,
+        u_blue: 0.99,
+    };
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            window.dispatchEvent(new Event('modalOpen'));
+
             if (initialLessonUid) {
                 setSelectedLessonUid(initialLessonUid);
             } else if (lessons.length > 0 && !selectedLessonUid) {
                 setSelectedLessonUid(lessons[0].uid);
             }
-        } else document.body.style.overflow = '';
-    }, [isOpen, initialLessonUid, lessons]);
+        } else {
+            document.body.style.overflow = '';
+            window.dispatchEvent(new Event('modalClose'));
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            window.dispatchEvent(new Event('modalClose'));
+        };
+    }, [isOpen, initialLessonUid, lessons, selectedLessonUid]);
 
     if (!isOpen) return null;
 
     if (!siteKey) {
         return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-xs">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/35 backdrop-blur-xs">
                 <p className="text-red-500 bg-white p-4 rounded-xl">System configuration error: Missing security key.</p>
             </div>
         );
@@ -114,7 +136,7 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping, ini
         }
     };
 
-    const inputBaseClasses = "w-full bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all backdrop-blur-md";
+    const inputBaseClasses = "w-full bg-zinc-950/10 hover:bg-zinc-950/15 focus:bg-zinc-950/20 border border-zinc-950/20 rounded-xl px-4 py-3 bg-zinc-950 placeholder-bg-zinc-950/50 focus:outline-none focus:ring-2 focus:ring-zinc-950/30 transition-all backdrop-blur-md";
 
     const PreviewCard = (
         <div className="pointer-events-none w-full">
@@ -127,23 +149,23 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping, ini
     );
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm animate-in fade-in duration-200 h-dvh w-screen overflow-y-auto" onClick={onClose}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/35 backdrop-blur-sm animate-in fade-in duration-200 h-dvh w-screen overflow-y-auto" onClick={onClose}>
             <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="fixed top-7 right-7 z-60 p-2 rounded-full bg-black/10 text-neutral-50/90 hover:bg-black/70 hover:text-white backdrop-blur-md transition-all hover:scale-105">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            <div className="relative w-full max-w-5xl my-auto bg-black/40 border border-white/20 backdrop-blur-2xl shadow-2xl rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row gap-8 text-neutral-50" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full max-w-5xl my-auto bg-white/60 border border-white/20 backdrop-blur-2xl shadow-2xl rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row gap-8 text-zinc-950" onClick={(e) => e.stopPropagation()}>
 
                 <div className="flex-1 w-full flex flex-col">
                     <div className="mb-6">
-                        <h2 className="text-3xl font-black text-white tracking-tight">Join a Lesson</h2>
-                        <p className="text-white/70 mt-1">Select an upcoming lesson to attend.</p>
+                        <h2 className="text-3xl font-koh-santepheap font-black text-zinc-950 tracking-tight">Join a Lesson</h2>
+                        <p className="text-text-zinc-950/70 mt-1">Select an upcoming lesson to attend.</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5 grow">
 
                         <div>
-                            <label className="block text-sm font-semibold text-white/80 mb-1.5 ml-1">Select Lesson</label>
+                            <label className="block font-koh-santepheap text-sm font-semibold text-text-zinc-950/80 mb-1.5 ml-1">Select Lesson</label>
                             <select
                                 className={`${inputBaseClasses} appearance-none cursor-pointer`}
                                 value={selectedLessonUid}
@@ -158,13 +180,13 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping, ini
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-white/80 mb-1.5 ml-1">Full Name <span className="text-red-400">*</span></label>
+                            <label className="block font-koh-santepheap text-sm font-semibold text-text-zinc-950/80 mb-1.5 ml-1">Full Name <span className="text-red-400">*</span></label>
                             <input type="text" placeholder="Your Name" required className={inputBaseClasses} value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-white/10 pt-5 mt-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-zinc-950/10 pt-5 mt-2">
                             <div className="col-span-full">
-                                <label className="block text-sm font-semibold text-white/80 ml-1">Contact Method <span className="text-white/50 font-normal">(Provide at least one)</span></label>
+                                <label className="block font-koh-santepheap text-sm font-semibold text-text-zinc-950/80 ml-1">Contact Method <span className="text-text-zinc-700 font-normal">(Provide at least one)</span></label>
                             </div>
                             <div>
                                 <input type="text" placeholder="Instagram (@handle)" className={inputBaseClasses} value={instagram} onChange={(e) => setInstagram(e.target.value)} />
@@ -174,32 +196,63 @@ export default function JoinModal({ isOpen, onClose, lessons, columnMapping, ini
                             </div>
                         </div>
 
-                        <div className="block lg:hidden mt-2 mb-2 p-4 bg-white border border-white/10 rounded-2xl">
-                            <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3 text-center">Selected Lesson Details</p>
-                            {PreviewCard}
+                        <div className="relative lg:hidden rounded-2xl flex items-center justify-center">
+                            <div className="absolute inset-0 w-full h-full bg-white/10 rounded-2xl blur-xs">
+                                <ShaderBackground
+                                    shaderName="watercolor"
+                                    uniforms={watercolorUniforms}
+                                />
+                            </div>
+                            <div className='relative w-full h-full px-4 py-6'>
+                                <p className="text-md font-bold text-zinc-950 uppercase tracking-widest text-center pb-2">Selected Lesson</p>
+                                {PreviewCard}
+                                <p className="text-xs font-bold text-zinc-950 uppercase tracking-widest mt-2 text-center">You will be notified in advance by your instructor</p>
+                            </div>
                         </div>
 
                         <div className="flex justify-center mt-2">
                             <Turnstile siteKey={siteKey} onSuccess={(token) => setTurnstileToken(token)} onExpire={() => setTurnstileToken(null)} ref={turnstileRef} options={{ theme: 'dark' }} />
                         </div>
 
-                        <div className="mt-auto pt-4">
-                            <button type="submit" disabled={!isFormValid() || isSubmitting} className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:bg-white/10 disabled:text-white/30 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-lg cursor-pointer disabled:cursor-not-allowed">
-                                {isSubmitting ? 'Securing Spot...' : status === 'success' ? 'Confirmed!' : 'Join Lesson'}
+                        <div className="mt-auto pt-4 font-koh-santepheap">
+                            <button
+                                type="submit"
+                                disabled={!isFormValid() || isSubmitting}
+                                className="relative w-full bg-transparent hover:bg-white disabled:bg-white/10 disabled:text-zinc-950/30 text-zinc-950 disabled:font-bold font-extrabold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-lg cursor-pointer disabled:cursor-not-allowed overflow-hidden"
+                            >
+                                {/* Text layered on top */}
+                                <span className="relative z-20">
+                                    {isSubmitting ? 'Securing Spot...' : status === 'success' ? 'Confirmed!' : 'Join Lesson'}
+                                </span>
+
+                                {/* Absolute background layer */}
+                                <div className="absolute inset-0 w-full h-full bg-white/10 rounded-xl blur-xs z-10 pointer-events-none">
+                                    {(isFormValid() || isSubmitting) && (
+                                        <ShaderBackground
+                                            shaderName="watercolor"
+                                            uniforms={watercolorUniforms}
+                                        />
+                                    )}
+                                </div>
                             </button>
                             {status === 'error' && <p className="text-red-400 text-sm mt-2 text-center">{errorMessage}</p>}
                         </div>
                     </form>
                 </div>
 
-                <div className="flex-1 w-full bg-white rounded-2xl p-6 hidden flex-col justify-center relative overflow-hidden lg:flex">
-                    <div className="absolute top-0 left-0 w-full h-full bg-gray-50 z-0"></div>
+                <div className="flex-1 w-full rounded-2xl p-6 hidden flex-col justify-center relative overflow-hidden lg:flex">
+                    <div className="absolute inset-0 w-full h-full bg-white/10 rounded-2xl blur-xs">
+                        <ShaderBackground
+                            shaderName="watercolor"
+                            uniforms={watercolorUniforms}
+                        />
+                    </div>
                     <div className="relative z-10 w-full">
-                        <h3 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4 text-center">Selected Lesson Details</h3>
+                        <h3 className="text-zinc-950 font-koh-santepheap text-xl font-bold uppercase tracking-widest mb-4 text-center">Selected Lesson</h3>
                         {PreviewCard}
+                        <h3 className="text-xs font-bold font-koh-santepheap text-zinc-950 uppercase tracking-widest mt-2 text-center">You will be notified in advance by your instructor</h3>
                     </div>
                 </div>
-
             </div>
         </div>
     );

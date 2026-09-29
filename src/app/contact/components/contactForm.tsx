@@ -80,11 +80,11 @@ export default function ContactForm() {
 
     return (
         <div className="z-50 bg-black/30 backdrop-blur-sm border-y border-white/20">
-            <form action={formAction} className="flex-col mb-4 p-8 px-16 text-3xl">
+            <form action={formAction} className="flex-col mb-4 p-4 pb-0 text-3xl text-white">
                 <input type="hidden" name="turnstileToken" value={turnstileToken || ""} />
                 
                 <div className="grid-cols-2 gap-8 flex">
-                    <div className="w-80">
+                    <div className="max-w-60">
                         <input
                             placeholder="Name"
                             id="name"
@@ -92,11 +92,11 @@ export default function ContactForm() {
                             type="text"
                             required
                             maxLength={100}
-                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white/70 placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
                         />
                     </div>
 
-                    <div className="w-150">
+                    <div className="grow">
                         <input
                             placeholder="Email"
                             id="email"
@@ -106,7 +106,7 @@ export default function ContactForm() {
                             maxLength={100}
                             pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                             title="Please enter a valid email address (e.g., name@domain.com)"
-                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                            className="w-full text-lg sm:text-xl p-1 pl-3 placeholder:text-white/70 placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
                         />
                     </div>
                 </div>
@@ -119,23 +119,23 @@ export default function ContactForm() {
                         required
                         rows={5}
                         maxLength={5000}
-                        className="w-full text-lg sm:text-xl p-3 placeholder:text-white placeholder:font-medium border-white/30 border bg-black/30 rounded-xs"
+                        className="w-full text-lg sm:text-xl p-3 placeholder:text-white/70 placeholder:font-medium border-white/30 border bg-black/30 rounded-xs h-20 max-h-40"
                     />
                 </div>
 
-                <div className="flex grid-cols-2 justify-center md:justify-start gap-4 sm:gap-8 -mb-5">
+                <div className="flex flex-col lg:flex-row grid-cols1 lg:grid-cols-2 justify-center md:justify-start gap-4 sm:gap-8">
                     <div>
                         <Turnstile
                             siteKey={siteKey}
                             onSuccess={(token) => setTurnstileToken(token)}
                             onExpire={() => setTurnstileToken(null)}
                             ref={turnstileRef}
-                            className="ml-4"
+                            className="-ml-3.25 lg:ml-0"
                         />
                     </div>
                     
                     <button 
-                        className="text-zinc-100 hover:text-white hover:scale-105 transition-all duration-200 bg-black/30 px-4 h-17 rounded-3xl backdrop-blur-lg border border-white/30"
+                        className="text-zinc-100 hover:text-white hover:scale-105 transition-all duration-200 bg-black/30 px-4 h-17 rounded-xl backdrop-blur-lg border border-white/30"
                         type="submit" 
                         disabled={isPending || !turnstileToken}
                         hidden={isPending || !turnstileToken}
@@ -144,7 +144,7 @@ export default function ContactForm() {
                         {isPending ? "Sending..." : "Send"}
                     </button>
 
-                    <div>
+                    <div className="font-livvic">
                         {state.type !== "idle" && (
                             <p style={{ color: state.type === "success" ? "green" : "red" }}>
                                 {state.message}
