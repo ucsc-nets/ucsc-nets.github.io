@@ -15,7 +15,7 @@ const navLinks = [
 
 const mobileBoxes = [
     { href: '/learn', label: 'Lessons', bg: '/images/weaving-lesson.webp' },
-    { href: '/events', label: 'Events', bg: '/images/community-weaving.webp' },
+    { href: '/events', label: 'Events', bg: '/images/night-treenet-tour.webp' },
     { href: '/contact', label: 'Contact', bg: '/images/secluded-levitation.webp' }
 ];
 

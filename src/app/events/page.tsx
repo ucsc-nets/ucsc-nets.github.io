@@ -76,6 +76,7 @@ export default function eventsPage() {
 
     const galleryImages = [
         "community-weaving.webp",
+        "night-treenet-tour.webp",
         "weaving-treenet-shadow.webp",
         "weaving-lesson.webp",
   

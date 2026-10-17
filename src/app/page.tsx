@@ -76,7 +76,7 @@ export default function Test() {
                             </Link>
                             <Link href="/events" className="relative w-full h-full rounded-lg overflow-hidden group">
                                 <Image
-                                    src="/images/community-weaving.webp"
+                                    src="/images/night-treenet-tour.webp"
                                     alt="Event Promotion"
                                     fill
                                     className="w-auto h-auto object-cover group-hover:scale-110 transform ease-in-out transition-transform duration-500"
