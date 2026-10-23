@@ -129,25 +129,12 @@ export default function Test() {
                                 </Link>
                             </div>
                         </div>
-                        <div className="hidden lg:flex bg-white/60 rounded-xl h-fit p-4 items-center flex-col mt-auto">
+                        <div className="hidden lg:flex bg-white/60 rounded-xl h-fit p-4 items-center flex-row gap-8 mt-4 align-center">
                             Get involved, send us a message on Instagram!
-                            <div className="flex gap-8 flex-row mt-4">
+                            <div className="flex flex-row">
                                 <a
                                     className="flex w-fit p-2 items-center justify-center gap-2 rounded-xl transition-colors bg-white/95 hover:bg-[#ccc] border-black/20 border-2"
                                     href="https://www.instagram.com/ucsc.nets"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image
-                                        src="/instagram.svg"
-                                        alt="Instagram logo"
-                                        width={32}
-                                        height={32}
-                                    />
-                                </a>
-                                <a
-                                    className="flex w-fit p-2 items-center justify-center gap-2 rounded-xl transition-colors bg-white/95 hover:bg-[#ccc] border-black/20 border-2"
-                                    href="https://www.instagram.com/ucsc_nature"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
